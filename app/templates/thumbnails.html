@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 
+{% block js %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script type="text/javascript" src="/static/js/app.js"></script>
+{% endblock%}
+
 {% block main %}
-<h1 class="page-header">Flask Thumbnail API</h1>
+<h1 class="page-header">Thumbnails</h1>
 <p class="lead">Use this starter template for your Flask apps as a way to quickly start any new project.<br>
 All you get are these files and mostly barebones HTML/CSS files.</p>
 
- {
- "error": null,
- "message": "Success",
- "thumbnails": [
- "https://example.com/image1.png",
- "https://example.com/images/thumb_image2.jpg",
- "https://example.com/thumbs/image1.png"
- ]
-}
+<div style="margin-left:100px; margin-right:100px;" ng-app="MyApp" ng-controller="MainController">
+	<div ng-repeat="url in thumbnails track by $index">
+		<div class="col-md-4">
+		    <img class = "img-thumbnail" style="width:200px; height:200x; " src="{{'{{url}}'}}">
+    		</div>
+	</div>
+</div>
 {% endblock %}

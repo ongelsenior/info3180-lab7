@@ -22,7 +22,6 @@ def home():
     
 @app.route('/api/thumbnails')
 def thumbnails():
-    render_template("thumbnails.html")
     url = "https://www.walmart.com/ip/54649026"
     result = requests.get(url)
     soup = BeautifulSoup(result.text, "html.parser")
@@ -47,7 +46,9 @@ def thumbnails():
         images+=[collect]
     return jsonify(error= None, message ="Success",thumbnails=images)
 
-
+@app.route('/thumbnails/view')
+def viewThumbnails():
+    return render_template("thumbnails.html")
 
 ###
 # The functions below should be applicable to all Flask apps.
